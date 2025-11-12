@@ -1,12 +1,12 @@
-package com.fiap.feedback;
+package com.fiap.course.feedback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FeedbackApiApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(FeedbackApiApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

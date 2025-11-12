@@ -1,44 +1,19 @@
-services:
-  db:
-    image: mysql:8.0
-    container_name: feedback-db
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - "${DB_PORT:-3306}:3306"
-    healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -p$${MYSQL_ROOT_PASSWORD}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-    volumes:
-      - db_data:/var/lib/mysql
+version: '3.8'
 
-  api:
-    build: .
-    container_name: feedback-api
-    depends_on:
-      db:
-        condition: service_healthy
-    env_file:
-      - .env
-    environment:
-      SERVER_PORT: ${SERVER_PORT}
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
+services:
+  # Serviço do Banco de Dados MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
     ports:
-      - "${SERVER_PORT:-8080}:8080"
-    restart: unless-stopped
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 466238
+      MYSQL_DATABASE: course
+      MYSQL_USER: course
+      MYSQL_PASSWORD: 466238
+    volumes:
+      - mysql-data:/var/lib/mysql
 
 volumes:
-  db_data:
+  mysql-data:

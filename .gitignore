@@ -34,5 +34,3 @@ Thumbs.db
 *.exec
 jacoco.exec
 
-# Other
-HELP.md

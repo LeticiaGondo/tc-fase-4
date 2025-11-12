@@ -20,8 +20,5 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Prepare environment
-        run: cp .env.example .env
-
       - name: Build and test
         run: ./mvnw --batch-mode verify

@@ -1,6 +1,0 @@
-services:
-  api:
-    environment:
-      JAVA_OPTS: "-XX:InitialRAMPercentage=25 -XX:MaxRAMPercentage=75"
-    volumes:
-      - ./logs:/opt/app/logs
